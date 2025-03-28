@@ -1,12 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./DarkHeader.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <header className="dark-header">
       <div className="dark-header-container">
         <div className="logo">
-          {/* Add logo SVG here */}
           <div className="logo-wrapper">
             <svg
               width="182"
@@ -42,19 +48,54 @@ const Header = () => {
 
         <nav className="nav-menu">
           <div className="nav-links">
-            <a href="#" className="nav-link">
+            <a 
+              href="/" 
+              className="nav-link" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation('/');
+              }}
+            >
               Home
             </a>
-            <a href="#" className="nav-link">
+            <a 
+              href="/about" 
+              className="nav-link"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation('/about');
+              }}
+            >
               About Us
             </a>
-            <a href="#" className="nav-link">
+            <a 
+              href="/pricing" 
+              className="nav-link"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation('/pricing');
+              }}
+            >
               Pricing
             </a>
-            <a href="#" className="nav-link">
+            <a 
+              href="/contact" 
+              className="nav-link"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation('/contact');
+              }}
+            >
               Contact
             </a>
-            <a href="#" className="nav-link nav-link-dropdown">
+            <a 
+              href="/campaigns" 
+              className="nav-link nav-link-dropdown"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation('/campaigns');
+              }}
+            >
               Campaigns
               <i className="ti ti-chevron-down"></i>
             </a>
@@ -62,8 +103,18 @@ const Header = () => {
         </nav>
 
         <div className="auth-buttons">
-          <button className="btn-login">Login</button>
-          <button className="btn-register">Register Now</button>
+          <button 
+            className="btn-login" 
+            onClick={() => handleNavigation('/login')}
+          >
+            Login
+          </button>
+          <button 
+            className="btn-register"
+            onClick={() => handleNavigation('/register')}
+          >
+            Register Now
+          </button>
         </div>
       </div>
     </header>
