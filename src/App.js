@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename={process.env.NODE_ENV === "production" ? "/my-react-app" : "/"}>
+    <Router basename="/my-react-app">
       <Suspense fallback={
         <div className="loading-screen">
           <img src={FullLogo} alt="Loading" className="loading-logo" />
