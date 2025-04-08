@@ -1,6 +1,6 @@
 import React, { useEffect, lazy, Suspense, useState } from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom"; // Only one HashRouter
 import { initScrollAnimations } from "./utils/scrollObserver";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FullLogo from "./img/logo/FullLogo.svg";
 import "./App.css";
 
@@ -19,37 +19,28 @@ const DonatePageV2 = lazy(() => import("./pages/DonatePageV2/DonatePageV2"));
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Check auth status on initial load
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     if (token) {
       setIsLoggedIn(true);
     }
   }, []);
+
   useEffect(() => {
     initScrollAnimations();
   }, []);
 
   return (
-    <Router>
+    <Router basename="/my-react-app">
       <Suspense fallback={
         <div className="loading-screen">
           <img src={FullLogo} alt="Loading" className="loading-logo" />
         </div>
       }>
         <Routes>
-          <Route 
-            path="/" 
-            element={<LandingPageV2 isLoggedIn={isLoggedIn} />} 
-          />
-          <Route 
-            path="/login" 
-            element={<LoginPageV2 setIsLoggedIn={setIsLoggedIn} />} 
-          />
-          <Route 
-            path="/register" 
-            element={<RegisterPageV2 setIsLoggedIn={setIsLoggedIn} />} 
-          />
+          <Route path="/" element={<LandingPageV2 isLoggedIn={isLoggedIn} />} />
+          <Route path="/login" element={<LoginPageV2 setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/register" element={<RegisterPageV2 setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/campaign/new" element={<NewCampaignPageV2 />} />
           <Route path="/campaign/preview" element={<CampaignPreviewPageV2 />} />
           <Route path="/bank-info" element={<BankInfoPageV2 />} />
