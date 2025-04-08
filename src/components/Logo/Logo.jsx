@@ -1,39 +1,17 @@
 import React from "react";
 import "./Logo.css";
+import symbolLogo from "../../img/logo/SymbolLogo.svg";
 
-const Logo = () => {
+const Logo = React.memo(({ className = "" }) => {
   return (
-    <svg
-      width="182"
-      height="56"
-      viewBox="0 0 182 56"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="logo"
-    >
-      <path
-        d="M43.7193 29.3339L40.964 38.0469C40.8024 38.556 40.3311 38.9034 39.7979 38.9034H31.2156C30.39 38.9034 29.7984 38.0985 30.0495 37.3074L32.8048 28.5977C32.963 28.0852 33.4377 27.7412 33.9709 27.7412H42.5532C43.3788 27.7412 43.9704 28.5462 43.7193 29.3339Z"
-        fill="#232323"
-      />
-      <path
-        d="M54.5892 12.5925L51.8339 21.3056C51.6722 21.8147 51.201 22.1587 50.6678 22.1587H30.0599C29.5886 22.1587 29.1793 22.4614 29.0314 22.9017C29.028 22.9051 29.0245 22.912 29.0245 22.9154V22.9189L28.8181 23.5725V23.5759C28.8181 23.5793 28.8147 23.5862 28.8113 23.5897L25.7326 33.3209L22.4751 43.6266C22.3135 44.1357 21.8422 44.4831 21.3056 44.4831H12.7267C11.8977 44.4831 11.3095 43.6782 11.5571 42.887L14.5842 33.3209L17.8417 23.0152C18.0033 22.5061 18.4781 22.1587 19.0112 22.1587H28.4673C28.9419 22.1587 29.3616 21.8526 29.5026 21.402L29.8879 20.1843C29.8879 20.1808 29.8913 20.1739 29.8948 20.1705L32.5228 11.8531C32.6845 11.344 33.1557 11 33.6923 11H53.4197C54.2486 11 54.8403 11.8049 54.5892 12.5925Z"
-        fill="#FFDD33"
-      />
-      <text
-        fill="black"
-        xmlSpace="preserve"
-        style={{ whiteSpace: "pre" }}
-        fontFamily="Raleway"
-        fontSize="24"
-        fontWeight="bold"
-        letterSpacing="0em"
-      >
-        <tspan x="66.6475" y="36.2132">
-          Altruistic
-        </tspan>
-      </text>
-    </svg>
+    <div className={`logo-container ${className}`}>
+      <img src={symbolLogo} alt="Symbol" className="logo-symbol" />
+      <div className="logo-text-container">
+        <span className="logo-text">ALTRUISTIC</span>
+        <span className="logo-text">FUNDRAISER</span>
+      </div>
+    </div>
   );
-};
+});
 
 export default Logo;
