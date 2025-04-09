@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/my-react-app">
+    <Router basename="/">
       <Suspense fallback={
         <div className="loading-screen">
           <img src={FullLogo} alt="Loading" className="loading-logo" />
